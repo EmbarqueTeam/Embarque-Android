@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.squareup.otto.Subscribe;
 import com.squareup.picasso.Picasso;
 
 import butterknife.ButterKnife;
@@ -19,6 +20,8 @@ import butterknife.OnClick;
 import io.embarque.embarque.R;
 import io.embarque.embarque.adapters.AirportDetailsAdapter;
 import io.embarque.embarque.data.ParseData;
+import io.embarque.embarque.events.FeedbackCreatedEvent;
+import io.embarque.embarque.services.BusService;
 import io.embarque.embarque.widgets.SlidingTabLayout;
 
 public class AirportInformationActivity extends ActionBarActivity {
@@ -57,6 +60,8 @@ public class AirportInformationActivity extends ActionBarActivity {
             cover.setVisibility(View.GONE);
             layer.setVisibility(View.GONE);
         }
+
+        BusService.getBus().register(this);
     }
 
     @Override
@@ -81,5 +86,20 @@ public class AirportInformationActivity extends ActionBarActivity {
     public boolean onSupportNavigateUp() {
         finish();
         return true;
+    }
+
+    @Override
+    protected void onPause() {
+
+        if (isFinishing()) {
+            BusService.getBus().unregister(this);
+        }
+
+        super.onPause();
+    }
+
+    @Subscribe
+    public void onFeedbackCreated(FeedbackCreatedEvent event) {
+        viewPager.setCurrentItem(1);
     }
 }

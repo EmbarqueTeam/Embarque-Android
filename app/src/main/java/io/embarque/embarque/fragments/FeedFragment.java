@@ -119,5 +119,6 @@ public class FeedFragment extends Fragment {
     @Subscribe
     public void onFeedbackCreated(FeedbackCreatedEvent event) {
         adapter.addFeedbackCreated(ParseData.currentFeedback);
+        recyclerView.scrollToPosition(0);
     }
 }

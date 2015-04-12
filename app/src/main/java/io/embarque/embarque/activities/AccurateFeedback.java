@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -71,6 +72,9 @@ public class AccurateFeedback extends ActionBarActivity {
 
     private void close() {
         BusService.getBus().post(new FeedbackCreatedEvent());
+
+        Toast.makeText(this, R.string.feedback_saved, Toast.LENGTH_LONG).show();
+
         finish();
     }
 
