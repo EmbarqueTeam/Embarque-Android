@@ -25,7 +25,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import io.embarque.embarque.activities.FeedActivity;
+import io.embarque.embarque.activities.AirportInformationActivity;
 import io.embarque.embarque.adapters.AirportListAdapter;
 import io.embarque.embarque.data.ParseData;
 import io.embarque.embarque.events.AirportClickedEvent;
@@ -134,7 +134,7 @@ public class MainActivity extends ActionBarActivity
     public void onAirportClicked(AirportClickedEvent event) {
         ParseData.selectedAirport = ParseData.airports.get(event.airportPosition);
 
-        Intent intent = new Intent(this, FeedActivity.class);
+        Intent intent = new Intent(this, AirportInformationActivity.class);
         startActivity(intent);
     }
 

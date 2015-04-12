@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,7 +18,7 @@ import io.embarque.embarque.R;
 import io.embarque.embarque.data.ParseData;
 import io.embarque.embarque.util.SeekBarStagedControl;
 
-public class CreateReportActivity extends ActionBarActivity {
+public class CreateFeedbackActivity extends ActionBarActivity {
 
     @InjectView(R.id.toolbar) Toolbar toolbar;
     @InjectView(R.id.feedback_content) LinearLayout feedbackContent;
@@ -44,29 +42,6 @@ public class CreateReportActivity extends ActionBarActivity {
     public boolean onSupportNavigateUp() {
         finish();
         return true;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_create_report, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_send) {
-            sendFeedback();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private void setUpView() {
@@ -104,15 +79,29 @@ public class CreateReportActivity extends ActionBarActivity {
 
             feedbackContent.addView(view);
         }
+
+        View view = inflater.inflate(R.layout.view_send_button, feedbackContent, false);
+
+        view.findViewById(R.id.send).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendFeedback();
+            }
+        });
+
+        feedbackContent.addView(view);
     }
 
     private void sendFeedback() {
         ParseObject feedback = new ParseObject("Feedback");
+
         feedback.add("punctuality", seekBarStagedControls[0].getSelectedPos() - 3);
         feedback.add("information", seekBarStagedControls[1].getSelectedPos() - 3);
         feedback.add("wifi", seekBarStagedControls[2].getSelectedPos() - 3);
         feedback.add("food", seekBarStagedControls[3].getSelectedPos() - 3);
         feedback.add("conservation", seekBarStagedControls[4].getSelectedPos() - 3);
         feedback.add("security", seekBarStagedControls[5].getSelectedPos() - 3);
+
+        feedback.saveEventually();
     }
 }

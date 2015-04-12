@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">Embarque</string>
 
-    <string name="action_settings">Settings</string>
     <string name="action_send">Enviar</string>
-
 
     <string name="pontualidade">Pontualidade</string>
     <string name="informacoes">Informações e Atendimento</string>
@@ -11,4 +9,10 @@
     <string name="alimentacao">Praça de Alimentação</string>
     <string name="conservacao">Conservação e Limpeza</string>
     <string name="seguranca">Segurança</string>
+
+    <string name="details">Detalhes</string>
+    <string name="feed">Feed</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -3,9 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.embarque.embarque.activities.FeedActivity">
+    tools:context="io.embarque.embarque.activities.AirportInformationActivity">
 
     <include layout="@layout/view_toolbar"/>
+
+    <io.embarque.embarque.widgets.SlidingTabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tabs"/>
 
     <com.getbase.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_report"

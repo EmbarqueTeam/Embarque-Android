@@ -24,10 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.FeedActivity" />
+        <activity android:name=".activities.AirportInformationActivity" />
         <activity
-            android:name=".activities.CreateReportActivity" >
-        </activity>
+            android:name=".activities.CreateFeedbackActivity"
+            android:noHistory="true"/>
     </application>
 
 </manifest>
