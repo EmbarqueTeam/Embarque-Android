@@ -19,14 +19,4 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/tabs"/>
 
-    <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_report"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
-        fab:fab_icon="@drawable/ic_create_white_24dp"/>
-
 </RelativeLayout>

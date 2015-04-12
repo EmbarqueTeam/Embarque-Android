@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -42,14 +45,23 @@ public class AirportInformationActivity extends ActionBarActivity {
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        finish();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater mi = getMenuInflater();
+        mi.inflate(R.menu.menu_write_feedback, menu);
         return true;
     }
 
-    @OnClick(R.id.add_report)
-    public void onAddReport() {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(this, CreateFeedbackActivity.class);
         startActivity(intent);
+        return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }
