@@ -37,6 +37,7 @@
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:src="@drawable/hand_down"
+                android:alpha=".2"
                 android:layout_centerVertical="true"/>
 
             <include layout="@layout/view_custom_seek"
@@ -52,6 +53,7 @@
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:src="@drawable/hands_up"
+                android:alpha=".2"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"/>
 

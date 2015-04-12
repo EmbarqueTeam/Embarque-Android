@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:paddingRight="16dp"
     android:paddingLeft="16dp"
-    android:layout_marginBottom="16dp">
+    android:layout_marginBottom="24dp">
 
     <ImageView
         android:id="@+id/icon"
@@ -32,13 +32,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/label"
-            android:layout_marginTop="-7dp">
+            android:layout_marginTop="-5dp">
 
             <ImageView
                 android:id="@+id/hands_down"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:src="@drawable/hand_down"
+                android:alpha=".2"
                 android:layout_centerVertical="true"/>
 
             <SeekBar
@@ -54,6 +55,7 @@
                 android:layout_width="38dp"
                 android:layout_height="38dp"
                 android:src="@drawable/hands_up"
+                android:alpha=".2"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"/>
 
