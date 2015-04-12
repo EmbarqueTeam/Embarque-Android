@@ -1,5 +1,6 @@
 package io.embarque.embarque.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,6 +15,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
@@ -22,6 +24,8 @@ import butterknife.InjectView;
 import io.embarque.embarque.R;
 import io.embarque.embarque.adapters.FeedAdapter;
 import io.embarque.embarque.data.ParseData;
+import io.embarque.embarque.events.FeedbackCreatedEvent;
+import io.embarque.embarque.services.BusService;
 import io.embarque.embarque.widgets.FixedRecyclerView;
 
 public class FeedFragment extends Fragment {
@@ -65,6 +69,18 @@ public class FeedFragment extends Fragment {
         ButterKnife.reset(this);
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        BusService.getBus().register(this);
+    }
+
+    @Override
+    public void onDetach() {
+        BusService.getBus().unregister(this);
+        super.onDetach();
+    }
+
     private void getData() {
         noContent.setVisibility(View.GONE);
 
@@ -98,5 +114,10 @@ public class FeedFragment extends Fragment {
                 R.string.parse_error,
                 Toast.LENGTH_LONG
         ).show();
+    }
+
+    @Subscribe
+    public void onFeedbackCreated(FeedbackCreatedEvent event) {
+        adapter.addFeedbackCreated(ParseData.currentFeedback);
     }
 }

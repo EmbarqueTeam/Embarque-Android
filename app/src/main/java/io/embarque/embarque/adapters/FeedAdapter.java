@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 
 import com.parse.ParseObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.embarque.embarque.holders.FeedbackItemView;
@@ -15,6 +16,15 @@ public class FeedAdapter extends RecyclerView.Adapter {
 
     public void setFeedbackList(List<ParseObject> feedbackList) {
         this.feedbackList = feedbackList;
+        notifyDataSetChanged();
+    }
+
+    public void addFeedbackCreated(ParseObject feedback) {
+        if (feedbackList == null) {
+            feedbackList = new ArrayList<>();
+        }
+
+        feedbackList.add(0, feedback);
         notifyDataSetChanged();
     }
 

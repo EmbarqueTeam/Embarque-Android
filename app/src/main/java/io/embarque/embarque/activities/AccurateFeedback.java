@@ -14,6 +14,8 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import io.embarque.embarque.R;
 import io.embarque.embarque.data.ParseData;
+import io.embarque.embarque.events.FeedbackCreatedEvent;
+import io.embarque.embarque.services.BusService;
 
 public class AccurateFeedback extends ActionBarActivity {
 
@@ -65,6 +67,7 @@ public class AccurateFeedback extends ActionBarActivity {
     }
 
     private void close() {
+        BusService.getBus().post(new FeedbackCreatedEvent());
         finish();
     }
 }
