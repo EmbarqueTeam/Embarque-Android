@@ -9,6 +9,11 @@ import android.widget.TextView;
 
 import com.parse.ParseObject;
 
+import org.ocpsoft.prettytime.PrettyTime;
+
+import java.util.Date;
+import java.util.Locale;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import io.embarque.embarque.R;
@@ -41,6 +46,7 @@ public class FeedbackItemView {
             holder.flight.setText(R.string.airport);
         }
 
+        holder.timeAgo.setText(new PrettyTime(new Locale("pt")).format(feedback.getCreatedAt()));
         holder.punctuality.setText(String.valueOf(feedback.getInt("punctuality")));
         holder.information.setText(String.valueOf(feedback.getInt("information")));
         holder.wifi.setText(String.valueOf(feedback.getInt("wifi")));

@@ -106,6 +106,7 @@
     <orderEntry type="library" exported="" name="recyclerview-v7-22.0.0" level="project" />
     <orderEntry type="library" exported="" name="ParseFacebookUtilsV4-1.9.1" level="project" />
     <orderEntry type="library" exported="" name="ParseCrashReporting-1.9.1" level="project" />
+    <orderEntry type="library" exported="" name="prettytime-3.2.7.Final" level="project" />
   </component>
 </module>
 
