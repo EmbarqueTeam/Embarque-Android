@@ -19,13 +19,17 @@
             android:id="@+id/flight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/airport"/>
+            android:text="@string/airport"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/time_ago"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="há 3 horas"
+            android:layout_marginTop="4dp"
+            android:textSize="12sp"
+            android:textColor="@android:color/darker_gray"
             android:layout_alignParentRight="true"/>
 
         <LinearLayout
