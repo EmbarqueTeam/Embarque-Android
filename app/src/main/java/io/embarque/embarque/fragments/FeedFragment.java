@@ -75,7 +75,7 @@ public class FeedFragment extends Fragment {
                     @Override
                     public void done(List<ParseObject> parseObjects, ParseException e) {
                         swipeRefresh.setRefreshing(false);
-                        if (e != null) {
+                        if (e != null && e.getCode() != ParseException.CACHE_MISS) {
                             showErrorMessage();
                             return;
                         }
