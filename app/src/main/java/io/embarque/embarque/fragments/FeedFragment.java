@@ -19,7 +19,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import io.embarque.embarque.R;
 import io.embarque.embarque.adapters.FeedAdapter;
-import io.embarque.embarque.data.ParseData;
 import io.embarque.embarque.widgets.FixedRecyclerView;
 
 public class FeedFragment extends Fragment {

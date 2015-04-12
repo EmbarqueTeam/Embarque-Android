@@ -14,4 +14,13 @@
         android:layout_height="36dp"
         android:background="@drawable/grey_rounded"/>
 
+    <TextView
+        android:id="@+id/grade"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:text="-5"/>
+
 </RelativeLayout>
