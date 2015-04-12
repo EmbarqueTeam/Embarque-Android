@@ -12,6 +12,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.parse.ParseObject;
+import com.squareup.picasso.Picasso;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -22,6 +23,7 @@ import io.embarque.embarque.util.SeekBarStagedControl;
 public class CreateFeedbackActivity extends ActionBarActivity {
 
     @InjectView(R.id.toolbar) Toolbar toolbar;
+    @InjectView(R.id.cover) ImageView cover;
     @InjectView(R.id.feedback_content) LinearLayout feedbackContent;
 
     SeekBarStagedControl[] seekBarStagedControls;
@@ -35,6 +37,12 @@ public class CreateFeedbackActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(ParseData.selectedAirport.getString("name"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if (ParseData.selectedAirport.getParseFile("cover") != null) {
+            Picasso.with(this).load(ParseData.selectedAirport.getParseFile("cover").getUrl())
+                    .fit().centerCrop().into(cover);
+            toolbar.setBackgroundResource(android.R.color.transparent);
+        }
 
         setUpView();
     }

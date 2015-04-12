@@ -4,19 +4,29 @@
     android:layout_height="match_parent"
     tools:context="io.embarque.embarque.activities.CreateFeedbackActivity">
 
+    <ImageView
+        android:id="@+id/cover"
+        android:layout_width="match_parent"
+        android:layout_height="110dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@drawable/backbar"/>
+
     <include layout="@layout/view_toolbar"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@+id/cover">
 
         <LinearLayout
             android:id="@+id/feedback_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="16dp">
+            android:paddingTop="24dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -24,7 +34,7 @@
                 android:textSize="18sp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="24dp"
                 android:text="@string/feedback_instructions"/>
 
         </LinearLayout>
