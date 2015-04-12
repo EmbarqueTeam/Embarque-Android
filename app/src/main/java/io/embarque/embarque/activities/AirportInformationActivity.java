@@ -34,7 +34,7 @@ public class AirportInformationActivity extends ActionBarActivity {
         viewPager.setAdapter(adapter);
 
         tabs.setContentDescription(0, getString(R.string.details));
-        tabs.setContentDescription(1, getString(R.string.feed));
+        tabs.setContentDescription(1, getString(R.string.history));
 
         tabs.setDistributeEvenly(true);
 

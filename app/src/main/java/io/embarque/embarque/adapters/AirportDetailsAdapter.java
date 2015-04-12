@@ -38,7 +38,7 @@ public class AirportDetailsAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return context.getString(R.string.details);
             default:
-                return context.getString(R.string.feed);
+                return context.getString(R.string.history);
         }
     }
 }
