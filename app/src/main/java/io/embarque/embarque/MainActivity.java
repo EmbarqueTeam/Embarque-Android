@@ -7,7 +7,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -108,7 +107,6 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onConnected(Bundle bundle) {
-        Log.d("EmbarqueGoogle", "onConnected");
         location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
         getAirports();
     }
@@ -116,12 +114,10 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onConnectionSuspended(int i) {
         //
-        Log.d("EmbarqueGoogle", "onConnectionSuspended");
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-        Log.d("EmbarqueGoogle", "onConnectionFailed");
         getAirports();
     }
 
@@ -160,7 +156,7 @@ public class MainActivity extends ActionBarActivity
 
             for (ParseObject parseObject : ParseData.airports) {
                 if (parseObject.getParseGeoPoint("location") != null) {
-                    parseObject.add("distance", parseGeoPoint.distanceInKilometersTo(parseObject.getParseGeoPoint("location")));
+                    parseObject.put("distance", parseGeoPoint.distanceInKilometersTo(parseObject.getParseGeoPoint("location")));
                 }
             }
 
