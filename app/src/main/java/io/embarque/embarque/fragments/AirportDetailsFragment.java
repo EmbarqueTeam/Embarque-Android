@@ -81,5 +81,9 @@ public class AirportDetailsFragment extends Fragment {
 
             airportContent.addView(view);
         }
+
+        View view = inflater.inflate(R.layout.view_rate_average, airportContent, false);
+        ((TextView) view.findViewById(R.id.rate_average)).setText("" + ParseData.selectedAirport.getDouble("rateAverage"));
+        airportContent.addView(view);
     }
 }
