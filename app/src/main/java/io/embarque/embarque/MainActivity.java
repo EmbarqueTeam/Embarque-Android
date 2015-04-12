@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -139,8 +140,7 @@ public class MainActivity extends ActionBarActivity
                     public void done(List<ParseObject> parseObjects, ParseException e) {
                         swipeRefresh.setRefreshing(false);
                         if (e != null) {
-                            // error
-                            Log.d("EmbarqueParse", e.getMessage());
+                            showErrorMessage();
                             return;
                         }
 
@@ -148,7 +148,7 @@ public class MainActivity extends ActionBarActivity
                         ParseData.airports = parseObjects;
                         orderAirports();
                     }
-        });
+                });
     }
 
     private void orderAirports() {
@@ -165,5 +165,13 @@ public class MainActivity extends ActionBarActivity
         }
 
         adapter.setAirports(ParseData.airports);
+    }
+
+    private void showErrorMessage() {
+        Toast.makeText(
+                this,
+                R.string.parse_error,
+                Toast.LENGTH_LONG
+        ).show();
     }
 }

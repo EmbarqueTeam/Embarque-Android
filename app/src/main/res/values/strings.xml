@@ -29,4 +29,5 @@
     <string name="skip">prefiro <u>pular</u>.</string>
 
     <string name="no_history">Ainda não temos nenhum feedback.\nSeja o primeiro a enviar um!</string>
+    <string name="parse_error">Ocorreu um erro no nosso serviço.\nPor favor, tente mais tarde!</string>
 </resources>

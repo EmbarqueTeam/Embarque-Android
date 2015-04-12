@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -75,7 +76,7 @@ public class FeedFragment extends Fragment {
                     public void done(List<ParseObject> parseObjects, ParseException e) {
                         swipeRefresh.setRefreshing(false);
                         if (e != null) {
-                            // error
+                            showErrorMessage();
                             return;
                         }
 
@@ -86,5 +87,13 @@ public class FeedFragment extends Fragment {
                         }
                     }
                 });
+    }
+
+    private void showErrorMessage() {
+        Toast.makeText(
+                getActivity(),
+                R.string.parse_error,
+                Toast.LENGTH_LONG
+        ).show();
     }
 }
