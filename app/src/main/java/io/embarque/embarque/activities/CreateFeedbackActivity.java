@@ -95,12 +95,15 @@ public class CreateFeedbackActivity extends ActionBarActivity {
     private void sendFeedback() {
         ParseObject feedback = new ParseObject("Feedback");
 
-        feedback.add("punctuality", seekBarStagedControls[0].getSelectedPos() - 3);
-        feedback.add("information", seekBarStagedControls[1].getSelectedPos() - 3);
-        feedback.add("wifi", seekBarStagedControls[2].getSelectedPos() - 3);
-        feedback.add("food", seekBarStagedControls[3].getSelectedPos() - 3);
-        feedback.add("conservation", seekBarStagedControls[4].getSelectedPos() - 3);
-        feedback.add("security", seekBarStagedControls[5].getSelectedPos() - 3);
+        feedback.put("punctuality", seekBarStagedControls[0].getSelectedPos() - 3);
+        feedback.put("information", seekBarStagedControls[1].getSelectedPos() - 3);
+        feedback.put("wifi", seekBarStagedControls[2].getSelectedPos() - 3);
+        feedback.put("food", seekBarStagedControls[3].getSelectedPos() - 3);
+        feedback.put("conservation", seekBarStagedControls[4].getSelectedPos() - 3);
+        feedback.put("security", seekBarStagedControls[5].getSelectedPos() - 3);
+        feedback.put("airport", ParseData.selectedAirport);
+
+        ParseData.currentFeedback = feedback;
 
         feedback.saveEventually();
     }

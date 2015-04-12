@@ -17,7 +17,7 @@ public class SeekBarStagedControl {
 
         setUp();
 
-        seekTo(0);
+        seekTo(3);
     }
 
     public void seekTo(int pos) {
