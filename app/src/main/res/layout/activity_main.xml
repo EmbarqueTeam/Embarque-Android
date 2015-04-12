@@ -6,10 +6,17 @@
 
     <include layout="@layout/view_toolbar"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/airports"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"/>
+        android:layout_height="match_parent">
+
+        <io.embarque.embarque.widgets.FixedRecyclerView
+            android:id="@+id/airports"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>
