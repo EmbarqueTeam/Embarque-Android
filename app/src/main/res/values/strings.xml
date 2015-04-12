@@ -30,4 +30,5 @@
 
     <string name="no_history">Ainda não temos nenhum feedback.\nSeja o primeiro a enviar um!</string>
     <string name="parse_error">Ocorreu um erro no nosso serviço.\nPor favor, tente mais tarde!</string>
+    <string name="feedback_instructions">Faça uma avaliação das seguintes condições.</string>
 </resources>

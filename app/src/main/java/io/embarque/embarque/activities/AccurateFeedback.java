@@ -28,6 +28,12 @@ public class AccurateFeedback extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
     @OnClick(R.id.send)
     public void onSend() {
         ParseData.currentFeedback.put("company", company.getText().toString());
