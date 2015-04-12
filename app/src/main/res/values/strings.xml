@@ -17,4 +17,13 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_accurate_feedback">AccurateFeedback</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="feedback_create_success">Obrigado pelo seu feedback.</string>
+    <string name="invite_to_accurate_feedback">Para contribuir ainda mais, nos dê algumas informações.</string>
+    <string name="company">Companhia</string>
+    <string name="fligth">Voo</string>
+    <string name="skip">prefiro <u>pular</u>.</string>
 </resources>

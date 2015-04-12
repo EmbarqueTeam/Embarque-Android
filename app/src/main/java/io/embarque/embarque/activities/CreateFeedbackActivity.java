@@ -1,5 +1,6 @@
 package io.embarque.embarque.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -106,5 +107,8 @@ public class CreateFeedbackActivity extends ActionBarActivity {
         ParseData.currentFeedback = feedback;
 
         feedback.saveEventually();
+
+        Intent intent = new Intent(this, AccurateFeedback.class);
+        startActivity(intent);
     }
 }
