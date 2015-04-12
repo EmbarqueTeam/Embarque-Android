@@ -9,9 +9,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/cover"
@@ -19,6 +19,7 @@
                 android:layout_height="110dp" />
 
             <View
+                android:id="@+id/layer"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:background="@drawable/backbar"/>

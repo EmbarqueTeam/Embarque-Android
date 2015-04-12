@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -24,6 +25,7 @@ public class AirportInformationActivity extends ActionBarActivity {
 
     @InjectView(R.id.toolbar) Toolbar toolbar;
     @InjectView(R.id.cover) ImageView cover;
+    @InjectView(R.id.layer) View layer;
     @InjectView(R.id.tabs) SlidingTabLayout tabs;
     @InjectView(R.id.view_pager) ViewPager viewPager;
 
@@ -51,6 +53,9 @@ public class AirportInformationActivity extends ActionBarActivity {
             Picasso.with(this).load(ParseData.selectedAirport.getParseFile("cover").getUrl())
                     .fit().centerCrop().into(cover);
             toolbar.setBackgroundResource(android.R.color.transparent);
+        } else {
+            cover.setVisibility(View.GONE);
+            layer.setVisibility(View.GONE);
         }
     }
 

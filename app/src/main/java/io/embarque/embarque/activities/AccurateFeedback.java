@@ -3,6 +3,7 @@ package io.embarque.embarque.activities;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -18,6 +19,7 @@ public class AccurateFeedback extends ActionBarActivity {
 
     @InjectView(R.id.toolbar) Toolbar toolbar;
     @InjectView(R.id.cover) ImageView cover;
+    @InjectView(R.id.layer) View layer;
     @InjectView(R.id.company) EditText company;
     @InjectView(R.id.flight) EditText flight;
 
@@ -35,6 +37,9 @@ public class AccurateFeedback extends ActionBarActivity {
             Picasso.with(this).load(ParseData.selectedAirport.getParseFile("cover").getUrl())
                     .fit().centerCrop().into(cover);
             toolbar.setBackgroundResource(android.R.color.transparent);
+        } else {
+            cover.setVisibility(View.GONE);
+            layer.setVisibility(View.GONE);
         }
     }
 

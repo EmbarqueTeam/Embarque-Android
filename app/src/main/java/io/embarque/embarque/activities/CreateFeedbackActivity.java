@@ -24,6 +24,7 @@ public class CreateFeedbackActivity extends ActionBarActivity {
 
     @InjectView(R.id.toolbar) Toolbar toolbar;
     @InjectView(R.id.cover) ImageView cover;
+    @InjectView(R.id.layer) View layer;
     @InjectView(R.id.feedback_content) LinearLayout feedbackContent;
 
     SeekBarStagedControl[] seekBarStagedControls;
@@ -42,6 +43,9 @@ public class CreateFeedbackActivity extends ActionBarActivity {
             Picasso.with(this).load(ParseData.selectedAirport.getParseFile("cover").getUrl())
                     .fit().centerCrop().into(cover);
             toolbar.setBackgroundResource(android.R.color.transparent);
+        } else {
+            cover.setVisibility(View.GONE);
+            layer.setVisibility(View.GONE);
         }
 
         setUpView();
