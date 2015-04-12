@@ -9,6 +9,7 @@
         <item name="colorAccent">@color/color_accent</item>
 
         <item name="android:windowBackground">@color/default_bg</item>
+        <item name="android:seekBarStyle">@style/SeekBarAppTheme</item>
     </style>
 
 </resources>
