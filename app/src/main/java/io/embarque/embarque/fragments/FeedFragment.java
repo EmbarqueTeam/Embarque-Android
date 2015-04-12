@@ -69,6 +69,7 @@ public class FeedFragment extends Fragment {
                 .findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> parseObjects, ParseException e) {
+                        swipeRefresh.setRefreshing(false);
                         if (e != null) {
                             // error
                             return;

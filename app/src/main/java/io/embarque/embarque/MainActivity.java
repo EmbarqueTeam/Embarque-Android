@@ -3,6 +3,7 @@ package io.embarque.embarque;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,11 +33,14 @@ import io.embarque.embarque.data.ParseData;
 import io.embarque.embarque.events.AirportClickedEvent;
 import io.embarque.embarque.services.BusService;
 import io.embarque.embarque.util.DistanceComparator;
+import io.embarque.embarque.widgets.FixedRecyclerView;
 
 public class MainActivity extends ActionBarActivity
         implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    @InjectView(R.id.airports) RecyclerView airports;
+    @InjectView(R.id.airports) FixedRecyclerView airports;
+    @InjectView(R.id.swipe_refresh) SwipeRefreshLayout swipeRefresh;
+
     @InjectView(R.id.toolbar) Toolbar toolbar;
 
     private GoogleApiClient googleApiClient;
@@ -57,6 +61,13 @@ public class MainActivity extends ActionBarActivity
 
         adapter = new AirportListAdapter();
         airports.setAdapter(adapter);
+
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getAirports();
+            }
+        });
 
         buildGoogleApiClient();
     }
@@ -121,19 +132,12 @@ public class MainActivity extends ActionBarActivity
     }
 
     private void getAirports() {
-        if (ParseData.airports != null) {
-            if (location != null) {
-                orderAirports();
-            }
-            return;
-        }
-
-        // clearAllAchedResults
         ParseQuery.getQuery("Airport").setLimit(200)
                 .setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK)
                 .findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> parseObjects, ParseException e) {
+                        swipeRefresh.setRefreshing(false);
                         if (e != null) {
                             // error
                             Log.d("EmbarqueParse", e.getMessage());
