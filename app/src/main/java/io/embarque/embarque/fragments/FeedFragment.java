@@ -85,6 +85,8 @@ public class FeedFragment extends Fragment {
 
                         if (parseObjects == null || parseObjects.size() == 0) {
                             noContent.setVisibility(View.VISIBLE);
+                        } else {
+                            noContent.setVisibility(View.GONE);
                         }
                     }
                 });
