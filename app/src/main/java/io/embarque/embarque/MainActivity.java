@@ -169,7 +169,9 @@ public class MainActivity extends ActionBarActivity
             ParseGeoPoint parseGeoPoint = new ParseGeoPoint(location.getLatitude(), location.getLongitude());
 
             for (ParseObject parseObject : ParseData.airports) {
-                parseObject.add("distance", parseGeoPoint.distanceInKilometersTo(parseObject.getParseGeoPoint("location")));
+                if (parseObject.getParseGeoPoint("location") != null) {
+                    parseObject.add("distance", parseGeoPoint.distanceInKilometersTo(parseObject.getParseGeoPoint("location")));
+                }
             }
 
             Collections.sort(ParseData.airports, new DistanceComparator());
