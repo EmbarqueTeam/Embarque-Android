@@ -1,45 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="100dp"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/airport_photo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha=".8"/>
+        android:alpha=".8" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical"
         android:background="@drawable/back"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/airport_name"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:shadowColor="@android:color/background_dark"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="10"
-            android:text="Aeroporto"/>
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/airport_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shadowColor="@android:color/background_dark"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="10"
+                android:text="Aeroporto"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/airport_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shadowColor="@android:color/background_dark"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="10"
+                android:text="Cidade - Estado"
+                android:layout_marginBottom="4dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/airport_location"
-            android:layout_width="match_parent"
+            android:id="@+id/airport_rate_average"
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/airport_name"
-            android:textColor="@android:color/white"
-            android:shadowColor="@android:color/background_dark"
-            android:shadowDx="5"
-            android:shadowDy="5"
-            android:shadowRadius="10"
-            android:text="Cidade - Estado"/>
-    </RelativeLayout>
+            android:gravity="center"
+            android:background="@color/color_primary"
+            android:padding="8dp"
+            android:text="4.5"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 
 </RelativeLayout>

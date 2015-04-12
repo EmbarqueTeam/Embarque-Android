@@ -36,6 +36,7 @@ public class AirportListItemView {
     public static void onBindViewHolder(AirportListItemViewHolder holder, ParseObject airport, int position) {
         holder.airportName.setText(airport.getString("name"));
         holder.airportLocation.setText(airport.getString("city"));
+        holder.airportRateAverage.setText("" + airport.getDouble("rateAverage"));
 
         if (airport.getParseFile("cover") != null) {
             Picasso.with(holder.airportPhoto.getContext()).load(airport.getParseFile("cover").getUrl())
@@ -49,6 +50,7 @@ public class AirportListItemView {
         @InjectView(R.id.airport_photo) ImageView airportPhoto;
         @InjectView(R.id.airport_name) TextView airportName;
         @InjectView(R.id.airport_location) TextView airportLocation;
+        @InjectView(R.id.airport_rate_average) TextView airportRateAverage;
 
         public AirportListItemViewHolder(View itemView) {
             super(itemView);
