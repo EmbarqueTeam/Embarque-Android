@@ -7,28 +7,39 @@
     <ImageView
         android:id="@+id/airport_photo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:alpha=".8"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black_alpha_filter"
+        android:gravity="center_vertical"
+        android:background="@drawable/back"
         android:padding="16dp">
 
         <TextView
             android:id="@+id/airport_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:textColor="@android:color/white"
-            android:textSize="24sp"/>
+            android:textSize="24sp"
+            android:shadowColor="@android:color/background_dark"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="10"
+            android:text="Aeroporto"/>
 
         <TextView
             android:id="@+id/airport_location"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/airport_name"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white"
+            android:shadowColor="@android:color/background_dark"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="10"
+            android:text="Cidade - Estado"/>
     </RelativeLayout>
 
 </RelativeLayout>
