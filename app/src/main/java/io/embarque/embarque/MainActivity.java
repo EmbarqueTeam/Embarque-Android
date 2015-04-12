@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -116,6 +117,7 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onConnected(Bundle bundle) {
+        Log.d("EmbarqueGoogle", "onConnected");
         location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
         getAirports();
     }
@@ -123,10 +125,12 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onConnectionSuspended(int i) {
         //
+        Log.d("EmbarqueGoogle", "onConnectionSuspended");
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
+        Log.d("EmbarqueGoogle", "onConnectionFailed");
         getAirports();
     }
 
@@ -154,6 +158,7 @@ public class MainActivity extends ActionBarActivity
                     public void done(List<ParseObject> parseObjects, ParseException e) {
                         if (e != null) {
                             // error
+                            Log.d("EmbarqueParse", e.getMessage());
                             return;
                         }
 
