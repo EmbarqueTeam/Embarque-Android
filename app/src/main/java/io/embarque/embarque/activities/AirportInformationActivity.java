@@ -46,17 +46,20 @@ public class AirportInformationActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        MenuInflater mi = getMenuInflater();
-        mi.inflate(R.menu.menu_write_feedback, menu);
-        return true;
+        getMenuInflater().inflate(R.menu.menu_write_feedback, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = new Intent(this, CreateFeedbackActivity.class);
-        startActivity(intent);
-        return true;
+
+        if (item.getItemId() == R.id.action_create) {
+            Intent intent = new Intent(this, CreateFeedbackActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
