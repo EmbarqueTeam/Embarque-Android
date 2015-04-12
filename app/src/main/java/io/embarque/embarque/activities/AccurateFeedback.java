@@ -20,6 +20,7 @@ import io.embarque.embarque.R;
 import io.embarque.embarque.data.ParseData;
 import io.embarque.embarque.events.FeedbackCreatedEvent;
 import io.embarque.embarque.services.BusService;
+import io.embarque.embarque.tracker.EmbarqueTracker;
 
 public class AccurateFeedback extends ActionBarActivity {
 
@@ -51,8 +52,21 @@ public class AccurateFeedback extends ActionBarActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
+        EmbarqueTracker.trackEvent("Feedback Final", "Cancelled");
         finish();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        EmbarqueTracker.trackEvent("Feedback Final", "Cancelled");
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EmbarqueTracker.trackScreen("Feedback Final Screen");
     }
 
     @OnClick(R.id.send)
@@ -61,6 +75,8 @@ public class AccurateFeedback extends ActionBarActivity {
         ParseData.currentFeedback.put("flight", flight.getText().toString());
 
         ParseData.currentFeedback.saveEventually();
+
+        EmbarqueTracker.trackEvent("Feedback Final", "Sent");
 
         close();
     }

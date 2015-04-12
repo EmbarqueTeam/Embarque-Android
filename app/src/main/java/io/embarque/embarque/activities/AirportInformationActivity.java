@@ -22,6 +22,7 @@ import io.embarque.embarque.adapters.AirportDetailsAdapter;
 import io.embarque.embarque.data.ParseData;
 import io.embarque.embarque.events.FeedbackCreatedEvent;
 import io.embarque.embarque.services.BusService;
+import io.embarque.embarque.tracker.EmbarqueTracker;
 import io.embarque.embarque.widgets.SlidingTabLayout;
 
 public class AirportInformationActivity extends ActionBarActivity {
@@ -31,6 +32,8 @@ public class AirportInformationActivity extends ActionBarActivity {
     @InjectView(R.id.layer) View layer;
     @InjectView(R.id.tabs) SlidingTabLayout tabs;
     @InjectView(R.id.view_pager) ViewPager viewPager;
+
+    int pageSelected = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,32 @@ public class AirportInformationActivity extends ActionBarActivity {
             layer.setVisibility(View.GONE);
         }
 
+        tabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                pageSelected = position;
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                //
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                if (state == ViewPager.SCROLL_STATE_IDLE) {
+                    if (pageSelected == 0) {
+                        EmbarqueTracker.trackScreen("Detail Screen");
+                    } else {
+                        EmbarqueTracker.trackScreen("History Screen");
+                    }
+                }
+            }
+        });
+
+        // default
+        EmbarqueTracker.trackScreen("Detail Screen");
+
         BusService.getBus().register(this);
     }
 
@@ -74,6 +103,11 @@ public class AirportInformationActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == R.id.action_create) {
+            if (pageSelected == 0) {
+                EmbarqueTracker.trackEvent("Detail", "Plus Selected");
+            } else {
+                EmbarqueTracker.trackEvent("History", "Plus Selected");
+            }
             Intent intent = new Intent(this, CreateFeedbackActivity.class);
             startActivity(intent);
             return true;

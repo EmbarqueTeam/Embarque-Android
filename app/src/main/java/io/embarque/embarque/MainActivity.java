@@ -6,11 +6,8 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -33,6 +30,7 @@ import io.embarque.embarque.adapters.AirportListAdapter;
 import io.embarque.embarque.data.ParseData;
 import io.embarque.embarque.events.AirportClickedEvent;
 import io.embarque.embarque.services.BusService;
+import io.embarque.embarque.tracker.EmbarqueTracker;
 import io.embarque.embarque.util.DistanceComparator;
 import io.embarque.embarque.widgets.FixedRecyclerView;
 
@@ -89,6 +87,9 @@ public class MainActivity extends ActionBarActivity
     protected void onResume() {
         super.onResume();
         BusService.getBus().register(this);
+
+        // track view
+        EmbarqueTracker.trackScreen("Airports Screen");
     }
 
     @Override
@@ -127,6 +128,8 @@ public class MainActivity extends ActionBarActivity
     @Subscribe
     public void onAirportClicked(AirportClickedEvent event) {
         ParseData.selectedAirport = ParseData.airports.get(event.airportPosition);
+
+        EmbarqueTracker.trackEvent("Airports", "Airport Selected", ParseData.selectedAirport.getString("name"));
 
         Intent intent = new Intent(this, AirportInformationActivity.class);
         startActivity(intent);

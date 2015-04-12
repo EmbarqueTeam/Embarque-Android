@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import io.embarque.embarque.R;
 import io.embarque.embarque.data.ParseData;
+import io.embarque.embarque.tracker.EmbarqueTracker;
 import io.embarque.embarque.util.SeekBarStagedControl;
 
 public class CreateFeedbackActivity extends ActionBarActivity {
@@ -53,8 +54,21 @@ public class CreateFeedbackActivity extends ActionBarActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
+        EmbarqueTracker.trackEvent("Feedback Main", "Cancelled");
         finish();
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        EmbarqueTracker.trackEvent("Feedback Main", "Cancelled");
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EmbarqueTracker.trackScreen("Feedback Main Screen");
     }
 
     private void setUpView() {
@@ -119,6 +133,8 @@ public class CreateFeedbackActivity extends ActionBarActivity {
         ParseData.currentFeedback = feedback;
 
         feedback.saveEventually();
+
+        EmbarqueTracker.trackEvent("Feedback Main", "Sent");
 
         Intent intent = new Intent(this, AccurateFeedback.class);
         startActivity(intent);
