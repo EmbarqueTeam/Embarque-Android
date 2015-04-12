@@ -70,6 +70,7 @@ public class FeedFragment extends Fragment {
 
         ParseQuery.getQuery("Feedback").setLimit(100)
                 .whereEqualTo("airport", ParseData.selectedAirport)
+                .orderByDescending("createdAt")
                 .setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK)
                 .findInBackground(new FindCallback<ParseObject>() {
                     @Override
