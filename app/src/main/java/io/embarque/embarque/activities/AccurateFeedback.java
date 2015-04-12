@@ -35,11 +35,15 @@ public class AccurateFeedback extends ActionBarActivity {
 
         ParseData.currentFeedback.saveEventually();
 
-        finish();
+        close();
     }
 
     @OnClick(R.id.skip)
     public void onSkip() {
+        close();
+    }
+
+    private void close() {
         finish();
     }
 }
