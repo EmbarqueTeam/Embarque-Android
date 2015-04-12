@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -26,6 +27,7 @@ public class FeedFragment extends Fragment {
 
     @InjectView(R.id.recycler_view) FixedRecyclerView recyclerView;
     @InjectView(R.id.swipe_refresh) SwipeRefreshLayout swipeRefresh;
+    @InjectView(R.id.no_content) TextView noContent;
 
     private FeedAdapter adapter;
 
@@ -63,6 +65,8 @@ public class FeedFragment extends Fragment {
     }
 
     private void getData() {
+        noContent.setVisibility(View.GONE);
+
         ParseQuery.getQuery("Feedback").setLimit(100)
                 .whereEqualTo("airport", ParseData.selectedAirport)
                 .setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK)
@@ -75,6 +79,10 @@ public class FeedFragment extends Fragment {
                         }
 
                         adapter.setFeedbackList(parseObjects);
+
+                        if (parseObjects == null || parseObjects.size() == 0) {
+                            noContent.setVisibility(View.VISIBLE);
+                        }
                     }
                 });
     }

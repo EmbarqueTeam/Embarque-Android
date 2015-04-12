@@ -27,4 +27,6 @@
     <string name="company">Companhia</string>
     <string name="fligth">Voo</string>
     <string name="skip">prefiro <u>pular</u>.</string>
+
+    <string name="no_history">Ainda não temos nenhum feedback.\nSeja o primeiro a enviar um!</string>
 </resources>
