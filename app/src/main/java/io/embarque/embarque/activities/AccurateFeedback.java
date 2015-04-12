@@ -1,40 +1,45 @@
 package io.embarque.embarque.activities;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
+import android.widget.EditText;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 import io.embarque.embarque.R;
+import io.embarque.embarque.data.ParseData;
 
 public class AccurateFeedback extends ActionBarActivity {
+
+    @InjectView(R.id.toolbar) Toolbar toolbar;
+    @InjectView(R.id.company) EditText company;
+    @InjectView(R.id.flight) EditText flight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accurate_feedback);
+        ButterKnife.inject(this);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(ParseData.selectedAirport.getString("name"));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @OnClick(R.id.send)
+    public void onSend() {
+        ParseData.currentFeedback.put("company", company.getText().toString());
+        ParseData.currentFeedback.put("flight", flight.getText().toString());
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_accurate_feedback, menu);
-        return true;
+        ParseData.currentFeedback.saveEventually();
+
+        finish();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    @OnClick(R.id.skip)
+    public void onSkip() {
+        finish();
     }
 }

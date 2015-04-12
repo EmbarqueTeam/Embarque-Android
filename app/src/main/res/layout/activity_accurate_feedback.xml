@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include layout="@layout/view_toolbar"></include>
+        <include layout="@layout/view_toolbar"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -62,12 +62,14 @@
             android:paddingRight="16dp">
 
             <EditText
+                android:id="@+id/company"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="18sp" />
 
             <EditText
+                android:id="@+id/flight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -75,9 +77,10 @@
 
         </LinearLayout>
 
-        <include layout="@layout/view_send_button"></include>
+        <include layout="@layout/view_send_button"/>
 
         <TextView
+            android:id="@+id/skip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"

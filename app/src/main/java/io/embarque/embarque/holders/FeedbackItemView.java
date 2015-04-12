@@ -1,6 +1,7 @@
 package io.embarque.embarque.holders;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +22,21 @@ public class FeedbackItemView {
     }
 
     public static void onBindViewHolder(FeedbackItemViewHolder holder, ParseObject feedback) {
-        if (feedback.getString("flight") != null) {
-            holder.flight.setText(feedback.getString("flight"));
+        if (!TextUtils.isEmpty(feedback.getString("company")) || !TextUtils.isEmpty(feedback.getString("flight"))) {
+            StringBuilder sb = new StringBuilder();
+
+            if (!TextUtils.isEmpty(feedback.getString("company"))) {
+                sb.append(feedback.getString("company"));
+            }
+
+            if (!TextUtils.isEmpty(feedback.getString("flight"))) {
+                if (sb.length() > 0) {
+                    sb.append(", ");
+                }
+                sb.append(feedback.getString("flight"));
+            }
+
+            holder.flight.setText(sb.toString());
         } else {
             holder.flight.setText(R.string.airport);
         }
