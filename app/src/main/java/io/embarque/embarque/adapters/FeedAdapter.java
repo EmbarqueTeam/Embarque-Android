@@ -8,6 +8,7 @@ import com.parse.ParseObject;
 import java.util.List;
 
 import io.embarque.embarque.holders.FeedbackItemView;
+import io.embarque.embarque.holders.VerticalSpacerView;
 
 public class FeedAdapter extends RecyclerView.Adapter {
     private List<ParseObject> feedbackList;
@@ -19,12 +20,20 @@ public class FeedAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return FeedbackItemView.onCreateViewHolder(parent);
+        switch (viewType) {
+            case 1:
+                return VerticalSpacerView.onCreateViewHolder(parent);
+            default:
+                return FeedbackItemView.onCreateViewHolder(parent);
+        }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        FeedbackItemView.onBindViewHolder((FeedbackItemView.FeedbackItemViewHolder) holder, feedbackList.get(position));
+        switch (getItemViewType(position)) {
+            case 0:
+                FeedbackItemView.onBindViewHolder((FeedbackItemView.FeedbackItemViewHolder) holder, feedbackList.get(position - 1));
+        }
     }
 
     @Override
@@ -32,6 +41,15 @@ public class FeedAdapter extends RecyclerView.Adapter {
         if (feedbackList == null) {
             return 0;
         }
-        return feedbackList.size();
+        return feedbackList.size() + 2; // +2: header + footer
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position == 0 || position == feedbackList.size() + 1) {
+            return 1;
+        }
+
+        return 0;
     }
 }

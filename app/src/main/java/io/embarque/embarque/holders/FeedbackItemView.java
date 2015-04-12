@@ -27,12 +27,12 @@ public class FeedbackItemView {
             holder.flight.setText(R.string.airport);
         }
 
-        holder.punctuality.setText(feedback.getString("punctuality"));
-        holder.information.setText(feedback.getString("information"));
-        holder.wifi.setText(feedback.getString("wifi"));
-        holder.food.setText(feedback.getString("food"));
-        holder.conservation.setText(feedback.getString("conservation"));
-        holder.security.setText(feedback.getString("security"));
+        holder.punctuality.setText(String.valueOf(feedback.getInt("punctuality")));
+        holder.information.setText(String.valueOf(feedback.getInt("information")));
+        holder.wifi.setText(String.valueOf(feedback.getInt("wifi")));
+        holder.food.setText(String.valueOf(feedback.getInt("food")));
+        holder.conservation.setText(String.valueOf(feedback.getInt("conservation")));
+        holder.security.setText(String.valueOf(feedback.getInt("security")));
     }
 
     public static class FeedbackItemViewHolder extends RecyclerView.ViewHolder {
