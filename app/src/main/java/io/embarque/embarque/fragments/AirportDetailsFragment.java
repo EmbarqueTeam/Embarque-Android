@@ -12,6 +12,8 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import io.embarque.embarque.R;
+import io.embarque.embarque.data.ParseData;
+import io.embarque.embarque.util.CustomSeekControl;
 
 public class AirportDetailsFragment extends Fragment {
 
@@ -57,6 +59,15 @@ public class AirportDetailsFragment extends Fragment {
                 R.drawable.security
         };
 
+        String[] keys = {
+                "punctuality",
+                "information",
+                "wifi",
+                "food",
+                "conservation",
+                "security"
+        };
+
         int totalItems = titles.length;
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -65,6 +76,8 @@ public class AirportDetailsFragment extends Fragment {
 
             ((ImageView) view.findViewById(R.id.icon)).setImageResource(icons[i]);
             ((TextView) view.findViewById(R.id.label)).setText(titles[i]);
+
+            CustomSeekControl.setView(view.findViewById(R.id.seek), ParseData.selectedAirport.getDouble(keys[i]));
 
             airportContent.addView(view);
         }

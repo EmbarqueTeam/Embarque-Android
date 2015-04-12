@@ -5,22 +5,20 @@
     android:layout_height="match_parent">
 
     <View
+        android:id="@+id/seek_bg"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:background="@drawable/light_grey_rounded"/>
-
-    <View
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:background="@drawable/grey_rounded"/>
+        android:layout_height="1dp"
+        android:background="@drawable/light_grey_rounded"
+        android:layout_centerVertical="true"/>
 
     <TextView
         android:id="@+id/grade"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        android:text="0"/>
+        android:background="@drawable/primary_color_rounded"
+        android:padding="8dp"
+        android:text="4.5"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

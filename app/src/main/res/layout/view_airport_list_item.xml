@@ -54,7 +54,7 @@
             android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:background="@color/color_primary"
+            android:background="@drawable/primary_color_rounded"
             android:padding="8dp"
             android:text="4.5"
             android:textColor="@android:color/white" />
