@@ -2,6 +2,7 @@
     <string name="app_name">Embarque</string>
 
     <string name="action_send">Enviar</string>
+    <string name="action_info">Informações</string>
     <string name="action_create">Criar</string>
 
     <string name="pontualidade">Pontualidade</string>
@@ -32,4 +33,9 @@
     <string name="parse_error">Ocorreu um erro no nosso serviço.\nPor favor, tente mais tarde!</string>
     <string name="feedback_instructions">Faça uma avaliação das seguintes condições.</string>
     <string name="feedback_saved">Feedback salvo com sucesso!</string>
+
+    <string name="modal_info_title">Sobre o App</string>
+    <string name="proud_developed_at_hack_in_poa">Orgulhosamente desenvolvido durante o</string>
+    <string name="nerd_team">Time Embarque.io\n\nCléber Henriques\nHenrique Güttler Morbin\nJean Carlo Emer\nTiago Cunha</string>
+    <string name="modal_info_positive">OK</string>
 </resources>

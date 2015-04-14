@@ -7,8 +7,11 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -97,6 +100,23 @@ public class MainActivity extends ActionBarActivity
         super.onPause();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.action_info) {
+            openInfoModal();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     protected synchronized void buildGoogleApiClient() {
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -172,5 +192,13 @@ public class MainActivity extends ActionBarActivity
                 R.string.parse_error,
                 Toast.LENGTH_LONG
         ).show();
+    }
+
+    private void openInfoModal() {
+        new MaterialDialog.Builder(this)
+                .title(R.string.modal_info_title)
+                .customView(R.layout.view_modal_info, true)
+                .positiveText(R.string.modal_info_positive)
+                .show();
     }
 }

@@ -66,7 +66,7 @@ public class FeedFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.reset(this);
+        //ButterKnife.reset(this);
     }
 
     @Override

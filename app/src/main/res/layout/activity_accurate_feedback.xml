@@ -16,12 +16,12 @@
             <ImageView
                 android:id="@+id/cover"
                 android:layout_width="match_parent"
-                android:layout_height="110dp" />
+                android:layout_height="@dimen/airport_cover_image_height" />
 
             <View
                 android:id="@+id/layer"
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
+                android:layout_height="@dimen/airport_cover_image_height"
                 android:background="@drawable/backbar"/>
 
             <include layout="@layout/view_toolbar"/>
